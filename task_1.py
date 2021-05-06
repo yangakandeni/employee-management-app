@@ -43,7 +43,7 @@ class Employee:
         # add new employee to employees dict
         Employee.employees.setdefault(new_employee.employee_id, new_employee)
 
-        return cls.employees
+        return cls.get_employee(new_employee.employee_id)
 
     @classmethod
     def update_details(cls, employee_number, name=None, department=None, job_title=None):

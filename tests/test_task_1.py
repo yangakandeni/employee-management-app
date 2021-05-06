@@ -44,6 +44,11 @@ class EmployeeTestCase(unittest.TestCase):
         self.assertEqual(updated_employee.get('department'), "Arts")
         self.assertEqual(updated_employee.get('job_title'), "Artist")
     
+    def test_cannot_update_employee_with_invalid_id(self):
+        updated_employee = Employee.update_details(employee_number="", name="Michael", department="Arts", job_title="Artist")
+
+        self.assertEqual(updated_employee, f"\nSorry, we could not find an employee with that id\n")
+
     def test_can_update_employee_name_only(self):
         updated_employee = Employee.update_details(employee_number="12345", name="Michael")
         self.assertEqual(updated_employee.get('name'), "Michael")

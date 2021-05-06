@@ -53,32 +53,38 @@ class Employee:
         """
 
         # lookup employee to modify
-        current_employee = Employee.get_employee(employee_number)
+        try:
+            current_employee = Employee.get_employee(employee_number)
 
-        # new details
-        new_details = {}
-        if name: new_details.setdefault('name', name)
-        if department: new_details.setdefault('department', department)
-        if job_title: new_details.setdefault('job_title', job_title)
+            # new details
+            new_details = {}
+            if name: new_details.setdefault('name', name)
+            if department: new_details.setdefault('department', department)
+            if job_title: new_details.setdefault('job_title', job_title)
 
-        # update employee details
-        current_employee.update(new_details)
+            # update employee details
+            current_employee.update(new_details)
 
-        return current_employee
+            return current_employee
+        except AttributeError:
+            return f"\nSorry, we could not find an employee with that id\n"
 
     @classmethod 
     def delete_employee(cls, employee_number):
         try:
             deleted_employee = Employee.employees.pop(employee_number)
-            return deleted_employee
-        except LookupError:
+
+            if deleted_employee is None: raise KeyError()
+            else: return deleted_employee
+
+        except KeyError:
             print(f"\nSorry, we could not find an employee with that id\n")
             return 
     
     @classmethod
     def display_details(cls):
         for count, employee in enumerate(cls.employees, 1):
-            print(f"\nEmployee {count}: {cls.employees.get(employee)}")
+            print(f"\nEmployee {count}: {cls.employees.get(employee)}\n")
 
         return cls.employees
     def __str__(self):

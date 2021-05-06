@@ -1,0 +1,1 @@
+# To run the employee tests :  py -m unittest tests/test_employee.py -v  # (-v is optional, for verbosity)

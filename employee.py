@@ -9,10 +9,10 @@ class Employee:
         self.job_title = job_title
         # create staff dict to store employee details
         self.staff = {
-            'Name': self.name,
-            'ID': self.employee_id,
-            'Department': self.department,
-            'Position': self.job_title
+            'name': self.name,
+            'employee_id': self.employee_id,
+            'department': self.department,
+            'job_title': self.job_title
         }
 
         # assign employee details to staff dict
@@ -20,12 +20,57 @@ class Employee:
 
     @classmethod
     def get_employee(cls, employee_number):
-
+        """
+        params: cls: Employee class
+        params: employee_number: employee id to lookup
+        """
         try:
-            return cls.employees.get(employee_number)
-        except Exception:
+            employee = cls.employees.get(employee_number)
+            return employee
+        except LookupError:
             print(f"\nSorry, we could not find an employee with that id\n")
+            return
+    
+    @classmethod
+    def add_new_employee(cls, new_employee):
+        """
+        Add new employee to the employees dict
+        """
 
+        # add new employee to employees dict
+        Employee.employees.setdefault(new_employee.employee_id, new_employee)
+
+        return cls.display_employees()
+
+    @classmethod
+    def update_details(cls, employee_number, name=None, department=None, job_title=None):
+        """
+        Lookup employee with provided employee_number
+        Update employee info with provided details
+        """
+
+        # lookup employee to modify
+        current_employee = Employee.get_employee(employee_number)
+
+        # new details
+        new_details = {}
+        if name: new_details.setdefault('name', name)
+        if department: new_details.setdefault('department', department)
+        if job_title: new_details.setdefault('job_title', job_title)
+
+        # update employee details
+        current_employee.update(new_details)
+
+        return current_employee
+
+    @classmethod 
+    def delete_employee(cls, employee_number):
+        try:
+            deleted_employee = Employee.employees.pop(employee_number)
+            return deleted_employee
+        except LookupError:
+            print(f"\nSorry, we could not find an employee with that id\n")
+            return 
     @classmethod
     def display_employees(cls):
         return cls.employees

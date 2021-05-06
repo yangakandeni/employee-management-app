@@ -5,12 +5,13 @@ from functions import display_menu, exit_program, get_selected_option, search_em
 
 
 def program():
-    print(display_menu(
-        option_1="Look up an employee", 
-        option_2="Add a new employee", 
-        option_3="Change an existing employee’s details", 
-        option_4="Delete an employee", 
-        option_5="Quit the program"
+    print(display_menu(options=[
+            "Look up an employee",
+            "Add a new employee",
+            "Change an existing employee’s details", 
+            "Delete an employee", 
+            "Quit the program"
+        ]
     ))
 
     selection = get_selected_option(valid_options=[1,2,3,4,5])

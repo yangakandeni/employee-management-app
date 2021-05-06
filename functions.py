@@ -47,16 +47,19 @@ def display_employees():
     return employees
 
 
-def display_menu(option_1=None, option_2=None, option_3=None, option_4=None, option_5=None):
+def display_menu(options=[]):
     """ display program menu"""
 
-    menu = f"\nPROGRAM MENU:\n1) {option_1}\n2) {option_2}\n3) {option_3}\n4) {option_4}\n5) {option_5}"
+    menu = "\nPROGRAM MENU:"
+    for count, option in enumerate(options, 1):
+        menu += f"\n{count}) {option}"
 
     return menu
 
 def get_selected_option(valid_options=[]):
     """ prompt user to choose valid menu option """
 
+    # prepare options prompt string
     response = input(f"\nChoose between {valid_options[0]} to {valid_options[-2]} OR press {valid_options[-1]} to quit: ")
     try:
         # convert response to int
@@ -90,10 +93,13 @@ def exit_program():
 
 
 def get_employee_id():
+    """ prompt user for employee id """
+
     employee_id = input("f\n\nPlease enter employee id: ")
     return employee_id
 
 def update_employee(employee_id=None):
+    """ lookup an employee and update details """
     # define variables
     name = None
     department = None
@@ -102,7 +108,7 @@ def update_employee(employee_id=None):
     employee = search_employees(employee_id)
 
     if type(employee) is not str:
-        print(f"\nWould you like to update about '{employee.get('name')}'?{display_menu(option_1='Name', option_2='Department', option_3='Job Title', option_4='All')}")
+        print(f"\nWould you like to update about '{employee.get('name')}'?{display_menu(options=['Name', 'Department', 'Job Title', 'All'])}")
 
         response = get_selected_option(valid_options=[1,2,3,4,5])
 
@@ -130,4 +136,26 @@ def update_employee(employee_id=None):
         print(employee)
 
 def delete_employee(employee_id=None):
-    return Employee.delete_employee(employee_id)
+    """ lookup an employee and delete entry"""
+
+    employee = search_employees(employee_id)
+
+    if type(employee) is not str:
+        print(f"\nAre you sure you want to delete '{employee.get('name')}'?{display_menu(options=['Yes', 'No', 'Exit'])}")
+
+        # prompt user to choose valid option
+        response = get_selected_option(valid_options=[1, 2, 3])
+
+        if response == 1:
+            # delete employee
+            employee = Employee.delete_employee(employee_id)
+            print(f"\n'{employee.get('name')}' was deleted\n")
+
+        elif response == 2:
+            print(f"\nCancelled...\n")
+            exit_program()
+            
+        elif response == 3:
+            exit_program()
+    else:
+        print(employee)

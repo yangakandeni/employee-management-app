@@ -11,6 +11,8 @@ class EmployeeTestCase(unittest.TestCase):
         self.assertEqual(mike.id_number, "12345")
         self.assertEqual(mike.department, "Engineering")
         self.assertEqual(mike.job_title, "Developer")
+        self.assertEqual(mike.__str__(
+        ), f"\nEmployee Name: {mike.name}\nID Number: {mike.id_number}\nDepartment: {mike.department}\nJob Title: {mike.job_title}")
 
 
 if __name__ == '__main__':

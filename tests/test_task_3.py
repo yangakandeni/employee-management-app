@@ -1,7 +1,7 @@
 
 import unittest
 
-from functions import display_menu, get_selected_option, exit_program, search_employees
+from functions import display_menu, get_selected_option, exit_program, search_employees, display_employees
 from task_1 import Employee
 
 class TASK3TestCase(unittest.TestCase):
@@ -17,16 +17,17 @@ class TASK3TestCase(unittest.TestCase):
         self.assertEqual(menu, f"\nPROGRAM MENU:\n1) Look up an employee\n2) Add a new employee\n3) Change an existing employee’s details\n4) Delete an employee\n5) Quit the program")
 
         
-    # def test_can_choose_option(self):
-    #     valid_options = [1,2,3,4,5]
-    #     answer = get_selected_option()
+    def test_can_choose_option(self):
+        valid_options = [1,2,3,4,5]
+        answer = get_selected_option()
 
-    #     self.assertTrue(answer in valid_options)
+        self.assertTrue(answer in valid_options)
     
-    #     with self.assertRaises(SystemExit):
-    #         exit_program()
-
+        with self.assertRaises(SystemExit):
+            exit_program()
+    
     def test_can_search_employees(self):
-        employee = search_employees(None)
-
+        employee = search_employees("12345")
         self.assertEqual(employee.get('name'), 'Mike')
+
+    

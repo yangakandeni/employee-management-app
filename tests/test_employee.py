@@ -23,9 +23,12 @@ class EmployeeTestCase(unittest.TestCase):
         ), f"\nEmployee Name: {mike.name}\nID Number: {mike.employee_id}\nDepartment: {mike.department}\nJob Title: {mike.job_title}")
         self.assertEqual(len(Employee.employees), 2)
     
-    def test_can_store_employees(self):
-        #
-        pass
+    def test_can_retrieve_employee(self):
+        employee_number = "12345"
+
+        mike = Employee.get_employee(employee_number)
+
+        self.assertEqual(mike, self.employee_1.__str__())
 
 
 if __name__ == '__main__':

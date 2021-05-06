@@ -1,5 +1,5 @@
 class Employee:
-    # stores all the created employees
+    # stores employees
     employees = {}
 
     def __init__(self, name, employee_id, department, job_title):
@@ -17,6 +17,14 @@ class Employee:
 
         # assign employee details to staff dict
         Employee.employees.setdefault(self.employee_id, self.staff)
+
+    @classmethod
+    def get_employee(cls, employee_number):
+
+        try:
+            return cls.employees.get(employee_number)
+        except Exception:
+            print(f"\nSorry, we could not find an employee with that id\n")
 
     @classmethod
     def display_employees(cls):

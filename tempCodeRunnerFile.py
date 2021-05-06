@@ -1,0 +1,1 @@
+exit_program(get_selected_option)

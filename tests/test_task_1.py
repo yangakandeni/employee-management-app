@@ -31,19 +31,31 @@ class EmployeeTestCase(unittest.TestCase):
         self.assertEqual(employee, f"\nSorry, we could not find an employee with that id\n")
     
     def test_can_add_new_employee(self):
-        new_employee = Employee(name="Kendrick", employee_id="88888", department="Music", job_title="Rapper")
+        employee = Employee(name="Kendrick", employee_id="88888", department="Music", job_title="Rapper")
 
-        Employee.add_new_employee(new_employee)
+        new_employee = Employee.add_new_employee(employee)
 
-        self.assertEqual(len(Employee.employees), 3)
+        self.assertEqual(new_employee, dict(name="Kendrick", employee_id="88888", department="Music", job_title="Rapper"))
     
-    def test_can_update_employee(self):
+    def test_can_update_all_employee_details(self):
         updated_employee = Employee.update_details(employee_number="12345", name="Michael", department="Arts", job_title="Artist")
 
         self.assertEqual(updated_employee.get('name'), "Michael")
         self.assertEqual(updated_employee.get('department'), "Arts")
         self.assertEqual(updated_employee.get('job_title'), "Artist")
     
+    def test_can_update_employee_name_only(self):
+        updated_employee = Employee.update_details(employee_number="12345", name="Michael")
+        self.assertEqual(updated_employee.get('name'), "Michael")
+    
+    def test_can_update_employee_department_only(self):
+        updated_employee = Employee.update_details(employee_number="12345", department="Arts")
+        self.assertEqual(updated_employee.get('department'), "Arts")
+    
+    def test_can_update_employee_position_only(self):
+        updated_employee = Employee.update_details(employee_number="12345", job_title="Artist")
+        self.assertEqual(updated_employee.get('job_title'), "Artist")
+        
     def test_can_delete_employee(self):
         deleted_employee = Employee.delete_employee(employee_number="88888")
 

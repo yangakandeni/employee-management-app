@@ -1,12 +1,11 @@
 import unittest
 
-from employee import Employee
+from task_1 import Employee
 
 class EmployeeTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.employee_1 = Employee(name="Mike", employee_id="12345",
-                        department="Engineering", job_title="Developer")
+        self.employee_1 = Employee(name="Mike", employee_id="12345", department="Engineering", job_title="Developer")
 
         self.employee_2 = Employee(name="Yanga", employee_id="54321", department="Engineering", job_title="Developer")
         return super().setUp()
@@ -23,9 +22,13 @@ class EmployeeTestCase(unittest.TestCase):
         self.assertEqual(len(Employee.employees), 3)
     
     def test_can_retrieve_employee(self):
-        employee_number = "12345"
-        employee = Employee.get_employee(employee_number)
-        self.assertEqual(employee.get('employee_id'), self.employee_1.employee_id)
+        
+        employee = Employee.get_employee("12345")
+        self.assertEqual(employee.get('employee_id'), "12345")
+
+    def test_cannot_retrieve_employee_with_invalid_id(self):
+        employee = Employee.get_employee()
+        self.assertEqual(employee, f"\nSorry, we could not find an employee with that id\n")
     
     def test_can_add_new_employee(self):
         new_employee = Employee(name="Kendrick", employee_id="88888", department="Music", job_title="Rapper")

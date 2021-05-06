@@ -19,17 +19,20 @@ class Employee:
         Employee.employees.setdefault(self.employee_id, self.staff)
 
     @classmethod
-    def get_employee(cls, employee_number):
+    def get_employee(cls, employee_number=None):
         """
         params: cls: Employee class
         params: employee_number: employee id to lookup
         """
+
         try:
-            employee = cls.employees.get(employee_number)
-            return employee
+            employee = cls.employees.get(employee_number, None)
+
+            # raise lookup error if employee is None
+            if not employee: raise LookupError
+            else: return employee
         except LookupError:
-            print(f"\nSorry, we could not find an employee with that id\n")
-            return
+            return f"\nSorry, we could not find an employee with that id\n"
     
     @classmethod
     def add_new_employee(cls, new_employee):
@@ -40,7 +43,7 @@ class Employee:
         # add new employee to employees dict
         Employee.employees.setdefault(new_employee.employee_id, new_employee)
 
-        return cls.display_employees()
+        return cls.employees
 
     @classmethod
     def update_details(cls, employee_number, name=None, department=None, job_title=None):
@@ -71,9 +74,12 @@ class Employee:
         except LookupError:
             print(f"\nSorry, we could not find an employee with that id\n")
             return 
+    
     @classmethod
-    def display_employees(cls):
-        return cls.employees
+    def display_details(cls):
+        for count, employee in enumerate(cls.employees, 1):
+            print(f"\nEmployee {count}: {cls.employees.get(employee)}")
 
+        return cls.employees
     def __str__(self):
         return f"\nEmployee Name: {self.name}\nID Number: {self.employee_id}\nDepartment: {self.department}\nJob Title: {self.job_title}"

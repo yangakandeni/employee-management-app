@@ -1,46 +1,12 @@
 import re
-from employee import Employee
+from task_1 import Employee
+from functions import create_new_employees, display_employees
 
 def program():
-    """ create employee instances """
+    """ create and display employee instances """
+    create_new_employees()
 
-    while(True):
-        create_new_employee = input("\nWould you like to create a new employee?\n(Yes/No): ")
-
-        if not re.match(r'(yes|y)', create_new_employee, re.IGNORECASE):
-            # print(f"\nYou entered: '{create_new_employee}'\nprogram exited....\n")
-            break
-        
-        # get user inputs
-        name = input("\nEnter employee name: ")
-        employee_id = input("\nEnter employee_id: ")
-        department = input("\nEnter employee department: ")
-        job_tile = input("\nEnter employee position: ")
-
-        # create employee object
-        Employee(name=name, employee_id=employee_id, department=department, job_title=job_tile)
-    
-    # display details of all created employees
-    display_details()
-    
-def display_details():
-    """" ask if user wants to see employee details """
-
-    answer = input("\nWould you like to see all your employees?\n(Yes/No): ")
-
-    # check if user wants to view employees
-    if not re.match(r'(yes|y)', answer, re.IGNORECASE):
-        print(f"\nYou entered: '{answer}'\n\nprogram exited....\n")
-        exit()
-    
-    # check if there's employees created
-    if Employee.employees:
-        print(f"\nHere are your employees: ")
-        Employee.display_details()
-        exit()
-    
-    print(f"\nYou don't have any employees yet: \n")
-    
+    display_employees()
     
 if __name__ == "__main__":
     

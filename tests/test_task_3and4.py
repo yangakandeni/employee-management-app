@@ -1,7 +1,7 @@
 
 import unittest
 
-from functions import display_menu, get_selected_option, exit_program, search_employees, display_employees
+from functions import display_menu, get_selected_option, exit_program, search_employees, display_employees, load_employees, save_employees
 from task_1 import Employee
 
 class TASK3TestCase(unittest.TestCase):
@@ -37,4 +37,23 @@ class TASK3TestCase(unittest.TestCase):
         employee = search_employees("12345")
         self.assertEqual(employee.get('name'), 'Mike')
 
+    def test_can_pickle_employees_to_file(self):
+        employees = Employee.employees
+        response = save_employees(employees)
+
+        self.assertDictEqual(response, employees)
+
+    def test_can_load_employees_from_pickle(self):
+        pickled_data = save_employees(Employee.employees, filename='test')
+        employees = load_employees(filepath='test.pickle')
+
+        self.assertDictEqual(employees, pickled_data)
     
+    def test_cannot_load_with_invalid_filepath(self):
+        employees = load_employees(filepath='')
+        self.assertDictEqual(employees, dict())
+    
+    def test_can_append_picked_file(self):
+        pickled_data = save_employees(Employee.employees, filename='test')
+        employees = load_employees(filepath='test.pickle')
+

@@ -1,7 +1,7 @@
 import re
 import os
 from task_1 import Employee
-from functions import display_menu, exit_program, get_selected_option, search_employees, create_new_employees, display_employees, update_employee, delete_employee, get_employee_id
+from functions import display_menu, exit_program, get_selected_option, search_employees, create_new_employees, display_employees, update_employee, delete_employee, get_employee_id, load_employees, save_employees
 
 
 def program():
@@ -45,5 +45,12 @@ def program():
 
 
 if __name__ == "__main__":
-    Employee(name="Mike", employee_id="12345", department="Engineering", job_title="Developer")
+    # create default employees
+    # Employee(name="Susanna Myer", employee_id="47899", department="Accounting", job_title="Vice President")
+    # Employee(name="Mark Joseph", employee_id="39119", department="Info Tech", job_title="Programmer")
+    # Employee(name="Joyce Roberts", employee_id="81774", department="Manufacturing", job_title="Engineer")
+    # save_employees(Employee.employees)
+    
+    employees = load_employees('employees.pickle')
+    print(f"\nCURRENT EMPLOYEES:\n{employees}\n")
     program()

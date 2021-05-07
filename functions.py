@@ -1,17 +1,26 @@
 import re
 
 from task_1 import Employee
+import pickle
 
 """" THIS FILE CONTAINS HELPER FUNCTIONS """
 
 
 def create_new_employees():
+    """ create new employees until user exits """
+
+    employees = None
+
     while(True):
         response = input("\nWould you like to add a new employee?\n(Yes/No): ")
 
+        # exit program
         if not re.match(r'(yes|y)', response, re.IGNORECASE):
-            # print(f"\nYou entered: '{response}'\nprogram exited....\n")
-            return Employee.employees
+            employees = Employee.employees
+
+            # save created employees
+            save_employees(current_data=employees)
+            return employees
 
         # get user inputs
         name = input("\nEnter employee name: ")
@@ -20,10 +29,14 @@ def create_new_employees():
         job_tile = input("\nEnter employee position: ")
 
         # create employee object
-        Employee(name=name, employee_id=employee_id,
-                 department=department, job_title=job_tile)
+        Employee(name=name, employee_id=employee_id, department=department, job_title=job_tile)
 
-    return Employee.employees
+    # save created employees
+    employees = Employee.employees
+    # save created employees
+    save_employees(current_data=employees)
+
+    return employees
 
 def display_employees():
     """" display created employees """
@@ -86,8 +99,11 @@ def get_selected_option(valid_options=[]):
 def search_employees(employee_id=None):
     return Employee.get_employee(employee_id)
 
-def exit_program():
+def exit_program(employees=None):
     """" exit program"""
+    # save created employees
+    # save_employees(employees)
+
     print(f"\nprogram exited....\n")
     exit()
 
@@ -159,3 +175,44 @@ def delete_employee(employee_id=None):
             exit_program()
     else:
         print(employee)
+
+def save_employees(current_data={}, filename=None):
+    """ pickle employees to a file """
+
+    # print("\nSAVING TO PICKLE", current_data)
+    if not filename:
+        previous_employees = load_employees('employees.pickle')
+        current_data.update(previous_employees)
+        with open('employees.pickle', 'wb') as f:
+            # Pickle the 'current_data' dictionary using the highest protocol availwble.
+            pickle.dump(current_data, f, pickle.HIGHEST_PROTOCOL)
+        return current_data
+    else:
+        previous_employees = load_employees(filename)
+        current_data.update(previous_employees)
+        with open(f'{filename}.pickle', 'wb') as f:
+            # Pickle the 'current_data' dictionary using the highest protocol available.
+            pickle.dump(current_data, f, pickle.HIGHEST_PROTOCOL)
+        return current_data
+
+
+def load_employees(filepath=None):
+    employees = {}
+    try:
+        # open file for reading in binary (rb+)
+        with open(filepath, 'rb+') as f:
+            # while True:
+            _employees = pickle.load(f)
+            # print(_employees)
+        # return empty dict if no employees found
+        if _employees: return _employees 
+    except EOFError:
+        return employees
+
+    except FileNotFoundError as error:
+        return employees
+    
+    return employees
+
+
+    

@@ -29,15 +29,7 @@ class ShiftEmployee(Employee):
     @classmethod
     def display_details(cls):
 
-        # get parent employees dict
-        # details = super().employees
-
-        # # add shift number and payrate
-        # details.update(cls.shift_workers)
-
         print(cls.shift_workers)
-        # for count, employee in enumerate(cls.shift_workers, 1):
-        #     print(f"\nEmployee {count}: {cls.shift_workers.get(employee)}\n")
 
         return cls.shift_workers
 

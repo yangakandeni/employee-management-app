@@ -3,6 +3,7 @@ import re
 
 from task_1 import Employee
 from task_5and6 import ShiftEmployee
+from task_8a import ContractEmployee
 
 """" THIS FILE CONTAINS HELPER FUNCTIONS """
 
@@ -33,6 +34,8 @@ def create_new_employees(employee_type="employee", attributes=[]):
             employee = ShiftEmployee(**employee_data)
             # employees = Employee.employees
             # return
+        elif employee_type == "contract_worker":
+            employee = ContractEmployee(**employee_data)
         else:
             Employee(**employee_data)
 
@@ -60,6 +63,9 @@ def display_employees(employee_type="employee"):
         print(f"\nHere are your {employee_type}s: ")
         if employee_type == "shift_worker":
             employees = ShiftEmployee.display_details()
+            return employees
+        elif employee_type == "contract_worker":
+            employees = ContractEmployee.display_details()
             return employees
 
         employees = Employee.display_details()

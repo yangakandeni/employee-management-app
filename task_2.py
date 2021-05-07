@@ -4,7 +4,7 @@ from functions import create_new_employees, display_employees
 
 def program():
     """ create and display employee instances """
-    create_new_employees()
+    create_new_employees(attributes=['name', 'employee_id', 'department', 'job_title'])
 
     display_employees()
     

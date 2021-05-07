@@ -26,7 +26,7 @@ def program():
     
     # add new employee
     if selection == 2:
-        create_new_employees()
+        create_new_employees(attributes=['name', 'employee_id', 'department', 'job_title'])
         display_employees()
     
     # update existing employee

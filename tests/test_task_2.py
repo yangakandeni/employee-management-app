@@ -9,7 +9,7 @@ class AddNewEmployeesTestCase(TestCase):
         return super().setUp()
 
     def test_can_create_new_employees(self):
-        employees = create_new_employees()
+        employees = create_new_employees(attributes=['name', 'employee_id', 'department', 'job_title'])
         self.assertEqual(employees, Employee.employees)
 
     def test_can_display_employees(self):

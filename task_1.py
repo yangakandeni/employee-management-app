@@ -87,5 +87,6 @@ class Employee:
             print(f"\nEmployee {count}: {cls.employees.get(employee)}\n")
 
         return cls.employees
+        
     def __str__(self):
         return f"\nEmployee Name: {self.name}\nID Number: {self.employee_id}\nDepartment: {self.department}\nJob Title: {self.job_title}"

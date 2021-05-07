@@ -6,7 +6,7 @@ import pickle
 """" THIS FILE CONTAINS HELPER FUNCTIONS """
 
 
-def create_new_employees():
+def create_new_employees(attributes=[]):
     """ create new employees until user exits """
 
     employees = None
@@ -23,13 +23,13 @@ def create_new_employees():
             return employees
 
         # get user inputs
-        name = input("\nEnter employee name: ")
-        employee_id = input("\nEnter employee_id: ")
-        department = input("\nEnter employee department: ")
-        job_tile = input("\nEnter employee position: ")
+        employee_data = {}
+        for attribute in attributes:
+            response = input(f"\nEnter {attribute}: ")
+            employee_data.setdefault(attribute, response)
 
         # create employee object
-        Employee(name=name, employee_id=employee_id, department=department, job_title=job_tile)
+        Employee(**employee_data)
 
     # save created employees
     employees = Employee.employees
@@ -213,6 +213,5 @@ def load_employees(filepath=None):
         return employees
     
     return employees
-
 
     

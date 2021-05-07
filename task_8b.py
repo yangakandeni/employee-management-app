@@ -9,6 +9,5 @@ def program():
     # display shift workers
     display_employees(employee_type="contract_worker")
 
-
 if __name__ == "__main__":
     program()

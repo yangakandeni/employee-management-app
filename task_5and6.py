@@ -8,12 +8,16 @@ class ShiftEmployee(Employee):
         self.shift_number = shift_number
         self.pay_rate = pay_rate
         self.staff = {
+            'name': self.name,
+            'employee_id': self.employee_id,
+            'department': self.department,
+            'job_title': self.job_title,
             'shfft_number': self.shift_number,
             'pay_rate': self.pay_rate
         }
 
         # assign employee details to shift_workers dict
-        ShiftEmployee.shift_workers.update(self.staff)
+        ShiftEmployee.shift_workers.setdefault(self.employee_id, self.staff)
     
     def get_shift_type(self):
         if self.shift_number == 1:
@@ -26,12 +30,16 @@ class ShiftEmployee(Employee):
     def display_details(cls):
 
         # get parent employees dict
-        details = super().employees
+        # details = super().employees
 
-        # add shift number and payrate
-        details.update(cls.shift_workers)
+        # # add shift number and payrate
+        # details.update(cls.shift_workers)
 
-        return details
+        print(cls.shift_workers)
+        # for count, employee in enumerate(cls.shift_workers, 1):
+        #     print(f"\nEmployee {count}: {cls.shift_workers.get(employee)}\n")
+
+        return cls.shift_workers
 
     # override __str__ method
     def __str__(self):

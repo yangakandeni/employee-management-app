@@ -1,23 +1,23 @@
+import pickle
 import re
 
 from task_1 import Employee
-import pickle
+from task_5and6 import ShiftEmployee
 
 """" THIS FILE CONTAINS HELPER FUNCTIONS """
 
 
-def create_new_employees(attributes=[]):
+def create_new_employees(employee_type="employee", attributes=[]):
     """ create new employees until user exits """
 
     employees = None
 
     while(True):
-        response = input("\nWould you like to add a new employee?\n(Yes/No): ")
+        response = input(f"\nWould you like to add a new {employee_type}?\n(Yes/No): ")
 
         # exit program
         if not re.match(r'(yes|y)', response, re.IGNORECASE):
             employees = Employee.employees
-
             # save created employees
             save_employees(current_data=employees)
             return employees
@@ -29,20 +29,25 @@ def create_new_employees(attributes=[]):
             employee_data.setdefault(attribute, response)
 
         # create employee object
-        Employee(**employee_data)
+        if employee_type == "shift_worker":
+            employee = ShiftEmployee(**employee_data)
+            # employees = Employee.employees
+            # return
+        else:
+            Employee(**employee_data)
 
-    # save created employees
     employees = Employee.employees
     # save created employees
     save_employees(current_data=employees)
 
     return employees
 
-def display_employees():
+
+def display_employees(employee_type="employee"):
     """" display created employees """
 
     employees = None
-    response = input("\nWould you like to see all your employees?\n(Yes/No): ")
+    response = input(f"\nWould you like to see all your {employee_type}s?\n(Yes/No): ")
 
     # check if user wants to view employees
     if not re.match(r'(yes|y)', response, re.IGNORECASE):
@@ -52,7 +57,11 @@ def display_employees():
 
     # check if there's employees created
     if Employee.employees:
-        print(f"\nHere are your employees: ")
+        print(f"\nHere are your {employee_type}s: ")
+        if employee_type == "shift_worker":
+            employees = ShiftEmployee.display_details()
+            return employees
+
         employees = Employee.display_details()
         return employees
 

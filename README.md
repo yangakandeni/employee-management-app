@@ -4,6 +4,21 @@ This repo is part 4 of a 4 part assignment, I was tasked to complete. This assig
 
 ## TASK 1️⃣ ➕ :two: 
 
+* ### RUNNING TESTS
+
+* Unittest Task :one:
+
+```bash
+python -m unittest tests/test_task_1.py -v
+```
+
+* * Unittest Task :two:
+    * Follow the interactive prompts and enter whatever details you like :smile: 
+
+```bash
+python -m unittest tests/test_task_2.py -v
+```
+
 ![task 1 and 2 (instructions)](/screenshots/ems-assignment-task1and2-instructions.png)
 ![task 1 and 2 (sample employee objects)](/screenshots/ems-assignment-task1and2-sample-employees.png)
 

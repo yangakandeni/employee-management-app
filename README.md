@@ -65,16 +65,10 @@ python -m unittest tests/test_task_5and6.py -v
 python task_7.py
 ```
 
-### RUN PROGRAM :eight: :a:
-
-```bash
-python task_8a.py
-```
-
 ### RUN PROGRAM :eight: :b:
 
 ```bash
-python task_8a.py
+python task_8b.py
 ```
 
 ![task 7 and 8](/screenshots/ems-assignment-task7to8.png)

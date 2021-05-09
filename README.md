@@ -47,13 +47,13 @@ python task_8b.py
 python -m unittest tests/test_task_1.py -v
 ```
 
-`The following test (test_task_2.py) has interactive prompts and enter whatever details you like` :smile:
+`The following test (test_task_2.py) has interactive prompts. Enter whatever details you like` :smile:
 
 ```bash
 python -m unittest tests/test_task_2.py -v
 ```
 
-`The following test (test_task_3and4.py) has interactive prompts and enter whatever details you like` :smile:
+`The following test (test_task_3and4.py) has interactive prompts. Enter whatever details you like` :smile:
 
 ```bash
 python -m unittest tests/test_task_3and4.py -v

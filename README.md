@@ -4,7 +4,7 @@
 
 ## TASK 1️⃣ ➕ :two: 
 
-### RUN PROGRAM :two:
+### RUN PROGRAM
 
 ```bash
 python task_2.py
@@ -15,13 +15,11 @@ python task_2.py
 
 ## TASK :three: :arrow_right: :six:
 
-### RUN PROGRAM :three: ➕ :four:
+### RUN PROGRAM :three: :arrow_right: :six:
 
 ```bash
 python task_3and4.py
 ```
-
-### RUN PROGRAM :five: ➕ :six:
 
 ```bash
 python task_5and6.py
@@ -31,13 +29,11 @@ python task_5and6.py
 
 ## TASK :seven: ➕ :eight:
 
-### RUN PROGRAM :seven:
+### RUN PROGRAM :seven: ➕ :eight:
 
 ```bash
 python task_7.py
 ```
-
-### RUN PROGRAM :eight: :b:
 
 ```bash
 python task_8b.py
@@ -51,13 +47,13 @@ python task_8b.py
 python -m unittest tests/test_task_1.py -v
 ```
 
-`The folling test (test_task_2.py) has interactive prompts and enter whatever details you like` :smile:
+### The folling test (test_task_2.py) has interactive prompts and enter whatever details you like :smile:
 
 ```bash
 python -m unittest tests/test_task_2.py -v
 ```
 
-`The folling test (test_task_3and4.py) has interactive prompts and enter whatever details you like` :smile:
+### The folling test (test_task_3and4.py) has interactive prompts and enter whatever details you like :smile:
 
 ```bash
 python -m unittest tests/test_task_3and4.py -v

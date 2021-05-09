@@ -1,6 +1,6 @@
 # Employee Management System (console app)
 
-## This is a python console app for an assignment. This exercise has 8 tasks
+## This is a python program for an employee management system app
 
 ## TASK 1️⃣ ➕ :two: 
 

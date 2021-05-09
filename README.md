@@ -7,15 +7,13 @@
 ![task 1 and 2 (instructions)](/screenshots/ems-assignment-task1and2-instructions.png)
 ![task 1 and 2 (sample employee objects)](/screenshots/ems-assignment-task1and2-sample-employees.png)
 
-### TESTS
-
-#### TASK :one:
+### TESTS FOR TASK :one:
 
 ```bash
 python -m unittest tests/test_task_1.py -v
 ```
 
-#### TASK :two:
+#### TESTS FOR TASK :two:
 
 * Follow the interactive prompts and enter whatever details you like :smile: 
 

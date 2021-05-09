@@ -2,7 +2,7 @@
 
 This repo is part 4 of a 4 part assignment, I was tasked to complete. This assigment has a set of 8 tasks.
 
-## TASK :one: :arrow_counterclockwise: :two: 
+## TASK 1️⃣ ➕ :two: 
 
 ![task 1 and 2 (instructions)](/screenshots/ems-assignment-task1and2.png)
 ![task 1 and 2 (sample employee objects)](/screenshots/ems-assignment-task1and2-sample-employees.png)
@@ -11,6 +11,6 @@ This repo is part 4 of a 4 part assignment, I was tasked to complete. This assig
 
 ![task 3 and 6](/screenshots/ems-assignment-task3to6.png)
 
-## TASK :seven: :arrow_counterclockwise: :eight: 
+## TASK :seven: ➕ :eight: 
 
 ![task 7 and 8](/screenshots/ems-assignment-task7to8.png)

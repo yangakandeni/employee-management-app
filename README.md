@@ -1,6 +1,6 @@
 # Employee Management System (console app)
 
-`This repo is part 4 of a 4 part assignment, I was tasked to complete. This assigment has a set of 8 tasks.`
+## This repo is part 4 of a 4 part assignment, I was tasked to complete. This assigment has a set of 8 tasks.
 
 ## TASK 1️⃣ ➕ :two: 
 
@@ -13,7 +13,7 @@
 python -m unittest tests/test_task_1.py -v
 ```
 
-#### TESTS FOR TASK :two:
+### TESTS FOR TASK :two:
 
 * Follow the interactive prompts and enter whatever details you like :smile: 
 
@@ -24,6 +24,20 @@ python -m unittest tests/test_task_2.py -v
 ## TASK :three: :arrow_right: :six: 
 
 ![task 3 and 6](/screenshots/ems-assignment-task3to6.png)
+
+### TESTS FOR TASK :three: ➕ :four:
+
+* Follow the interactive prompts and enter whatever details you like :smile: 
+
+```bash
+python -m unittest tests/test_task_3and4.py -v
+```
+
+### TESTS FOR TASK :five: ➕ :six:
+
+```bash
+python -m unittest tests/test_task_5and6.py -v
+```
 
 ## TASK :seven: ➕ :eight: 
 
